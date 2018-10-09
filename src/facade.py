@@ -1,3 +1,5 @@
+from models.user import *
+
 class Facade:
     def login(email, password):
         return UserRepositoryInstance.get_user(email, password)
