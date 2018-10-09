@@ -13,25 +13,17 @@ def signup():
     else:
         email = request.form['email']
         password = request.form['password']
-        if SignupController.signup(email, password):
-            return redirect('/login/')
-        else:
-            flash('failed')
-            return redirect('/signup/')
+        return SignupController.signup(email, password)
 
 @app.route("/login/", methods = ["GET", "POST"])
 def login():
     if request.method == "GET":
         if 'email' in session:
-            return session['email']
+            return "Welcome, " + session['email']
         return render_template('login.html')
     else:
         email = request.form['email']
         password = request.form['password']
-        user = LoginController.login(email, password)
-        if user == None:
-            return redirect('/login/')
-        session['email'] = user.email
-        return redirect('/login/')
+        return LoginController.login(email, password)
 
 app.run(host='0.0.0.0', port=80)
