@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title> Sign Up</title>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+        <form action="/signup/" method="post">
+            <input name="email" placeholder="email"/>
+            <br/>
+            <input name="password" placeholder="password"/>
+            <br/>
+            <button type="submit">Sign Up</button>
+        </form>
+    </body>
+</html>
